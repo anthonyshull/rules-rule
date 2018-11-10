@@ -1,0 +1,6 @@
+date,from,to,company,grade,volume
+2018-10-01,houston,dallas,valero,premium,1000
+2018-10-02,dallas,,sunoco,premium,500
+2018-10-03,houston,austin,chevron,regular,11.9
+2018-10-04,arlington,dallas,chevron,regular,-11.9
+2018-10-05,houston,arlington,valero,premium,800

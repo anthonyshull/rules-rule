@@ -19,3 +19,8 @@
   []
   =>
   nil)
+
+(defn apply-rules
+  ""
+  [movements]
+  nil)

@@ -15,5 +15,4 @@
     file
     slurp
     csv->maps
-    (map m/map->movement)
-    println))
+    (pmap m/map->movement)))

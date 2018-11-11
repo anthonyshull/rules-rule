@@ -14,6 +14,16 @@
 %> lein test
 ```
 
+**docs**
+```
+%> lein codox
+```
+
+**lint**
+```
+%> lein eastwood
+```
+
 ## Extract
 
 In the extract phase, we attempt to take raw data and convert it to a specified shape.

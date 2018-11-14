@@ -1,5 +1,7 @@
 # Rules Rule!
 
+**source format** -> **source value** -> rules -> **application value**
+
 *NOTE*: In a real project, certain functions would have been further broken out as utils.
 
 ## Usage
@@ -26,11 +28,12 @@
 
 ## Extract
 
-In the extract phase, we attempt to take raw data and convert it to a specified shape.
+In the extract phase, we attempt to take data in a source format and convert it to a source value.
+E.g., we could take a specific XML document and convert it to a vector of maps.
 
 We use [clojure.spec](https://clojure.org/guides/spec).
 
-Our goal is to build up a library of re-usable functions to abtract away common operations like fetching a file from S3 or converting CSV to a map.
+Our goal is to build up a library of re-usable functions to abtract away common operations like fetching a file from S3 or converting a CSV row to a map.
 
 We have two somewhat related issues that we commonly have to tackle:
 

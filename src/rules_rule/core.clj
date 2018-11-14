@@ -1,7 +1,7 @@
 (ns rules-rule.core
-  (:require [rules-rule.extract :as e]
-            [rules-rule.transform :as t]
-            [rules-rule.load :as l])
+  (:require [rules-rule.extract :as extract]
+            [rules-rule.transform :as transform]
+            [rules-rule.load :as load])
   (:gen-class))
 
 (defn process
@@ -9,9 +9,8 @@
   [file]
   (->>
     file
-    e/csv->movements
-    t/apply-rules
-    l/movements->json))
+    extract/csv->movements
+    transform/apply-rules))
 
 (defn -main
   ""

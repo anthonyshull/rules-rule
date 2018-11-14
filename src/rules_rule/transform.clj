@@ -1,26 +1,34 @@
 (ns rules-rule.transform
-  (:require [clara.rules :refer :all])
+  (:require [clojure.string :as str]
+            [clara.rules :refer :all])
+  (:import [rules_rule.movement Movement])
   (:gen-class))
+
+(def alerts (atom []))
+
+(defrule missing-destination
+  "If the destination is missing and the company is Sunoco then the destination is Arlington."
+  [Movement (str/blank? destination) (= "sunoco" company)]
+  =>
+  (swap! alerts #(conj % "missing destination")))
 
 (defrule negative-volume
   "If the volume is negative flip the origin and destination."
-  []
+  [Movement (neg? volume)]
   =>
-  nil)
+  (swap! alerts #(conj % "negative volume")))
 
-(defrule missing-location
-  "If the destination is missing and the company is Sunoco the destination is Arlington."
-  []
+(defrule regular-gasoline
+  "If the grade is regular gasoline, convert gallons to barrels."
+  [Movement (= "regular" grade)]
   =>
-  nil)
-
-(defrule regular-barrels
-  "If the product is regular gasoline convert from barrels to gallons."
-  []
-  =>
-  nil)
+  (swap! alerts #(conj % "regular gasoline")))
 
 (defn apply-rules
   ""
   [movements]
-  nil)
+  (->
+    (mk-session 'rules-rule.transform)
+    (insert-all movements)
+    (fire-rules))
+  (println alerts))

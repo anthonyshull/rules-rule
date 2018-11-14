@@ -25,13 +25,14 @@
 (defmethod map->movement :old [row]
   ""
   (let [volume (Integer/parseInt (:volume row))]
-    (map->Movement
-      {:date (:date row)
-      :origin (:from row)
-      :destination (:to row)
-      :company (:company row)
-      :grade (:grade row)
-      :volume volume})))
+    (->
+      row
+      (assoc :origin (:from row))
+      (dissoc :origin)
+      (assoc :destination (:to row))
+      (dissoc :destination)
+      (assoc :volume volume)
+      map->Movement)))
 
 (defmethod map->movement :new [row]
   ""

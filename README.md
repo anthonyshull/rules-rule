@@ -1,6 +1,6 @@
 # Rules Rule!
 
-**source format** -> **source value** -> rules -> **application value**
+source format -> source value -> **rules** -> application value
 
 *NOTE*: In a real project, certain functions would have been further broken out as utils.
 

@@ -6,7 +6,9 @@
   (:import [rules_rule.movement Movement])
   (:gen-class))
 
-(def mvmts (atom {}))
+(def mvmts 
+  "An atom that tracks the state of rule applications on movements."
+  (atom {}))
 
 (defrule missing-destination
   "If the destination is missing and the company is Sunoco then the destination is Arlington."
@@ -38,7 +40,7 @@
     (swap! mvmts #(assoc % (:uuid movement) new-movement))))
 
 (defn apply-rules
-  ""
+  "Apply the rules in the namespace to the given movements."
   [movements]
   (reset! mvmts (utils/seq-to-map movements :uuid))
   (->
@@ -46,4 +48,4 @@
     (mk-session 'rules-rule.transform)
     (insert-all movements)
     (fire-rules))
-    @mvmts)
+  (vals @mvmts))

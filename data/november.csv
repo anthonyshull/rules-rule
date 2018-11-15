@@ -1,6 +1,6 @@
 date,origin,destination,company,grade,volume
 2018-11-01,houston,dallas,valero,premium,500
 2018-11-02,dallas,,sunoco,premium,900
-2018-11-03,houston,austin,chevron,regular,-16
-2018-11-04,arlington,dallas,chevron,regular,5
+2018-11-03,houston,austin,chevron,regular,-21000
+2018-11-04,arlington,dallas,chevron,regular,8400
 2018-11-05,houston,arlington,valero,premium,-1000

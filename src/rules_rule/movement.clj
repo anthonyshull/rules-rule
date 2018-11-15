@@ -3,8 +3,10 @@
             [clj-time.format :as format])
   (:gen-class))
 
-(defrecord Movement [date origin destination company grade volume])
+; RECORDS
+(defrecord Movement [uuid date origin destination company grade volume])
 
+; FUNCTIONS
 (defn before-november-2018?
   "Did the movement occur before November 2018?"
   [date]
@@ -23,18 +25,19 @@
   old-new-format)
 
 (defmethod map->movement :old [row]
-  ""
   (let [volume (Integer/parseInt (:volume row))]
     (->
       row
-      (assoc :origin (:from row))
-      (dissoc :origin)
-      (assoc :destination (:to row))
-      (dissoc :destination)
+      (assoc :uuid (str (java.util.UUID/randomUUID)))
+      (assoc :origin (:from row) :destination (:to row))
+      (dissoc :from :to)
       (assoc :volume volume)
       map->Movement)))
 
 (defmethod map->movement :new [row]
-  ""
   (let [volume (Integer/parseInt (:volume row))]
-    (map->Movement (assoc row :volume volume))))
+    (->
+      row
+      (assoc :uuid (str (java.util.UUID/randomUUID)))
+      (assoc :volume volume)
+      map->Movement)))

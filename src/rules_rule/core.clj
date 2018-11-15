@@ -10,9 +10,14 @@
   (->>
     file
     extract/csv->movements
-    transform/apply-rules))
+    transform/apply-rules
+    load/movements->json))
 
 (defn -main
   ""
   [& args]
-  (process (first args)))
+  (->
+    args
+    first
+    process
+    println))

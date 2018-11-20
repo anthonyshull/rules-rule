@@ -26,6 +26,16 @@ source format -> source value -> **rules** -> application value
 %> lein eastwood
 ```
 
+**compile**
+```
+%> lein uberjar
+```
+
+**run compiled**
+```
+%> java -jar target/rules_rule-0.0.1-standalone.jar "data/november.csv"
+```
+
 ## Extract
 
 In the extract phase, we attempt to take data in a source format and convert it to a source value.

@@ -1,4 +1,4 @@
-(defproject rules_rule "0.1.0-SNAPSHOT"
+(defproject rules_rule "0.0.1"
   :description "Example data ingestion pipeline with clara-rules."
   :url "https://github.com/anthonyshull/rules-rule"
   :license {:name "Eclipse Public License"
@@ -11,4 +11,6 @@
                  [csv-map "0.1.2"]
                  [com.cerner/clara-rules "0.19.0"]]
   :plugins [[lein-codox "0.10.5"]
-            [jonase/eastwood "0.3.3"]])
+            [jonase/eastwood "0.3.3"]]
+  :main rules-rule.core
+  :aot [rules-rule.core])

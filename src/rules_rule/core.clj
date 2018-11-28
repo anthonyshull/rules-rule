@@ -1,11 +1,12 @@
 (ns rules-rule.core
+  "Project demonstrating the use of Clara rules to ingest data."
   (:require [rules-rule.extract :as extract]
             [rules-rule.transform :as transform]
             [rules-rule.load :as load])
   (:gen-class))
 
 (defn process
-  "Extract, transform and load movements data."
+  "Given a `file` extract, transform, and load the movements data it represents."
   [file]
   (->>
     file
@@ -14,7 +15,7 @@
     load/movements->json))
 
 (defn -main
-  ""
+  "Pass command-line `args` to the processor."
   [& args]
   (->
     args

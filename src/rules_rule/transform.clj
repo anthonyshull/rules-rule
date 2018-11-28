@@ -1,4 +1,5 @@
 (ns rules-rule.transform
+  "Transform movements to movements based on clearly defined rules."
   (:require [clojure.string :as str]
             [clojure.math.numeric-tower :as math]
             [rules-rule.utils :as utils]
@@ -27,7 +28,10 @@
         new-origin (:destination movement)
         new-destination (:origin movement)
         new-volume (math/abs (:volume movement))
-        new-movement (assoc movement :origin new-origin :destination new-destination :volume new-volume)]
+        new-movement (assoc movement
+                            :origin new-origin
+                            :destination new-destination
+                            :volume new-volume)]
     (swap! mvmts #(assoc % (:uuid movement) new-movement))))
 
 (defrule regular-gasoline

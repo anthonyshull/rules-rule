@@ -71,6 +71,7 @@ Check out [kafkacat](https://github.com/edenhill/kafkacat), a Kafka command-line
 ## Usage
 
 **dependencies**
+
 Install [Java](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04)
 Install [Clojure](https://clojure.org/guides/getting_started#_installation_on_linux)
 Install [Leiningen](https://leiningen.org/)

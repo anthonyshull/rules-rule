@@ -8,17 +8,15 @@
 (defn process
   "Given a `file` extract, transform, and load the movements data it represents."
   [file]
-  (->>
-    file
-    extract/csv->movements
-    transform/apply-rules
-    load/movements->json))
+  (->> file
+       extract/csv->movements
+       transform/apply-rules
+       load/movements->json))
 
 (defn -main
   "Pass command-line `args` to the processor."
   [& args]
-  (->
-    args
-    first
-    process
-    println))
+  (-> args
+      first
+      process
+      println))

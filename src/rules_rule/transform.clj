@@ -47,9 +47,8 @@
   "Apply the rules in the namespace to the given movements."
   [movements]
   (reset! mvmts (utils/seq-to-map movements :uuid))
-  (->
-    movements
-    (mk-session 'rules-rule.transform)
-    (insert-all movements)
-    (fire-rules))
+  (-> movements
+      (mk-session 'rules-rule.transform)
+      (insert-all movements)
+      (fire-rules))
   (vals @mvmts))

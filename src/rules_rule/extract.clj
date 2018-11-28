@@ -12,8 +12,7 @@
 (defn csv->movements
   "Take a file in `csv` format of movement rows and convert it to a sequence of movement records."
   [csv]
-  (->>
-    csv
-    slurp
-    csv->maps
-    (map movement/map->movement)))
+  (->> csv
+       slurp
+       csv->maps
+       (map movement/map->movement)))

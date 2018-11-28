@@ -43,18 +43,16 @@
 
 (defmethod map->movement :old [row]
   (let [volume (Integer/parseInt (:volume row))]
-    (->
-      row
-      (assoc :uuid (str (java.util.UUID/randomUUID)))
-      (assoc :origin (:from row) :destination (:to row))
-      (dissoc :from :to)
-      (assoc :volume volume)
-      map->Movement)))
+    (-> row
+        (assoc :uuid (str (java.util.UUID/randomUUID)))
+        (assoc :origin (:from row) :destination (:to row))
+        (dissoc :from :to)
+        (assoc :volume volume)
+        map->Movement)))
 
 (defmethod map->movement :new [row]
   (let [volume (Integer/parseInt (:volume row))]
-    (->
-      row
-      (assoc :uuid (str (java.util.UUID/randomUUID)))
-      (assoc :volume volume)
-      map->Movement)))
+    (-> row
+        (assoc :uuid (str (java.util.UUID/randomUUID)))
+        (assoc :volume volume)
+        map->Movement)))
